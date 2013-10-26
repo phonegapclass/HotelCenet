@@ -1,5 +1,6 @@
 //archivos
 function subirFoto(foto){
+		alert(1);
 		var options = new FileUploadOptions();
 		options.fileKey="file";
 		options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
@@ -13,6 +14,7 @@ function subirFoto(foto){
 
 		var ft = new FileTransfer();
 		ft.upload(foto, "http://www.igitsoft.com/pgtest.php", function(r){
+			alert(2);
 			navigator.notification.confirm("Registro Satifactorio\nRespuesta: "+r.responseCode,function(btn){
 				switch(btn){
 					case 1:
