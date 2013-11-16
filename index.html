@@ -1,10 +1,12 @@
 <!DOCTYPE html> 
 <html>
 <head>
+
 <meta charset="utf-8">
 <title>Aplic. Web de jQuery Mobile</title>
 <link href="css/jquery.mobile.theme-1.0.min.css" rel="stylesheet" type="text/css"/>
 <link href="css/jquery.mobile.structure-1.0.min.css" rel="stylesheet" type="text/css"/>
+
 <script src="phonegap.js"></script>
 <script src="js/jquery-1.6.4.min.js" type="text/javascript"></script>
 <script src="js/jquery.mobile-1.0.min.js" type="text/javascript"></script>
@@ -14,6 +16,12 @@
 <script src="js/API/archivos.js"></script>
 <script src="js/API/dispositivo.js"></script>
 <script src="js/API/almacenamiento.js"></script>
+<style>
+	.loader{width:100%;height:100%;display:none;z-index:5;position:absolute;top:0;left:0;}
+	.mask{width:100%;height:100%;background:#fff;opacity:0.7;}
+	.title{width:100%;height:100%;position:absolute;top:0;left:0;background:url(img/load.gif) no-repeat 50% 50%;}
+	.title div{margin: 150px auto;text-align:center;}
+</style>
 </head> 
 <body>
 <div data-role="page" id="page">
@@ -182,6 +190,10 @@
 	<div data-role="footer" data-position="fixed" style="padding: 10px 0; text-align:center;">
 		<a data-role="button" id="regEnv" href="#">Registrar</a>
 	</div>
+    <div class="loader">
+        <div class="mask"></div>
+        <div class="title"><div>Cargando</div></div>
+    </div>
 </div>
 
 </body>

@@ -6,6 +6,7 @@ function enviarDatos(nom,mail,tel,foto){
 		data: "nom="+nom+"&mai="+mail+"&tel="+tel
 	}).done(function( msg ) {
 		if(msg==1){
+			$('.title div').text('Subiendo Foto');
 			subirFoto(foto);	
 		}else{
 			navigator.notification.alert("Hubo un error en el registro",null,"Error","Aceptar");
