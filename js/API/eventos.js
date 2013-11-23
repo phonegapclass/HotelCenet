@@ -23,6 +23,15 @@ $(function(){
 		$('#regFoto').tap(function(){
 			tomarFoto();
 		});
+		
+		//Acciones de nueva reserva
+		$('#nr1 ul:eq(0) li').tap(function(){
+			if($(this).index()>0){
+				$('#nr1 ul:eq(0) li').css('background','');
+				$(this).css('background','yellow');
+				$('#nr1').attr('th',$(this).index());
+			}
+		});
 	}, false);
 });
 
