@@ -17,7 +17,9 @@ function accesoBD(){
 }
 
 function crearReservas(th,pr,ha,di){
-	db.transaction(function(tx){
+	alert(0);
+	accesoBD().transaction(function(tx){
+		alert(1);
     	tx.executeSql('CREATE TABLE IF NOT EXISTS reservas (id unique, th, pr, ha, di)');
     	tx.executeSql('INSERT INTO DEMO (th,pr,ha,di) VALUES ("'+th+'","'+pr+'","'+ha+'","'+di+'")');
 	},function(err){
