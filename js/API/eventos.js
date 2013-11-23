@@ -32,6 +32,22 @@ $(function(){
 				$('#nr1').attr('th',$(this).index());
 			}
 		});
+		$('#nrSig').tap(function(){
+			if($('#nr1').attr('th') != undefined && $('#nr1').attr('th') != '')
+				window.location.href = '#nr2';
+		});
+		$('#resEnv').tap(function(){
+			var pr = $('#resPer').val();
+			var ha = $('#resHab').val();
+			var di = $('#resDia').val();
+			var th = $('#nr1').attr('th');
+			
+			//Preguntamos si está conectado o no
+			if(estaConectado())
+				//Sincronizamos datos con el servidor
+			else
+				crearReservas(th,pr,ha,di);//Guardamos datos localmente
+		});
 	}, false);
 });
 

@@ -10,3 +10,19 @@ function estaRegistrado(){
 	else
 		return true;
 }
+//WEB SQL (SQLite)
+function accesoBD(){
+	var bd = window.openDatabase("hotel","1.0","Hotel Cenet", 200000);
+	return bd;
+}
+
+function crearReservas(th,pr,ha,di){
+	db.transaction(function(tx){
+    	tx.executeSql('CREATE TABLE IF NOT EXISTS reservas (id unique, th, pr, ha, di)');
+    	tx.executeSql('INSERT INTO DEMO (th,pr,ha,di) VALUES ("'+th+'","'+pr+'","'+ha+'","'+di+'")');
+	},function(err){
+    	alert("Error processing SQL: "+err.code);
+	},function(){
+    	navigator.notification.alert("Esperando a conexión para sincronizar",null,"Reserva Guardada","De acuerdo");
+	});
+}
