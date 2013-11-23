@@ -44,7 +44,7 @@ $(function(){
 			
 			//Preguntamos si está conectado o no
 			if(estaConectado())
-				//Sincronizamos datos con el servidor
+				enviarReservas(th,pr,ha,di);//Sincronizamos datos con el servidor
 			else
 				crearReservas(th,pr,ha,di);//Guardamos datos localmente
 		});
