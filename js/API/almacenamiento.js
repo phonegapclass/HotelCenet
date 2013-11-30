@@ -40,17 +40,16 @@ function crearHistorial(th,pr,ha,di){
 
 function leerReservas(){
 	accesoBD().transaction(function(tx){
-		tx.executeSql('SELECT * FROM resarvas',[],function(tx2,res){
-			var largo = res.rows.length;
-			for(i=0;i<largo;i++){
-				var th = res.rows.item(i).th;
-				var pr = res.rows.item(i).pr;
-				var ha = res.rows.item(i).ha;
-				var di = res.rows.item(i).di;
-				alert(th+'\n'+pr+'\n'+ha+'\n'+di);
-				enviarReservas(th,pr,ha,di);
-				//tx2.executeSql('DELETE FROM reservas WHERE id='+res.rows.item(i).id);
-			}
+		tx.executeSql('SELECT * FROM reservas',[],function(tx2,res){
+				var largo = res.rows.length;
+				for(i=0;i<largo;i++){
+						var th = res.rows.item(i).th;
+						var pr = res.rows.item(i).pr;
+						var ha = res.rows.item(i).ha;
+						var di = res.rows.item(i).di;
+						
+						alert(th+'\n'+pr+'\n'+ha+'\n'+di);
+				}
 		},function(err){
 			alert('No se leyó correctamente');
 		});
