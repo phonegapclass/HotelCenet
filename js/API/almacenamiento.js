@@ -20,8 +20,8 @@ function crearReservas(th,pr,ha,di){
 	alert(0);
 	accesoBD().transaction(function(tx){
 		alert(1);
-    	tx.executeSql('CREATE TABLE IF NOT EXISTS reservas (id unique, th, pr, ha, di)');
-    	tx.executeSql('INSERT INTO DEMO (th,pr,ha,di) VALUES ("'+th+'","'+pr+'","'+ha+'","'+di+'")');
+    	tx.executeSql('CREATE TABLE IF NOT EXISTS reservas (id unique,th,pr,ha,di)');
+        tx.executeSql('INSERT INTO reservas (th,pr,ha,di) VALUES ("'+th+'","'+pr+'","'+ha+'","'+di+'")');
 	},function(err){
     	alert("Error processing SQL: "+err.code);
 	},function(){
