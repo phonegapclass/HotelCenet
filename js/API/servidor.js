@@ -2,7 +2,7 @@
 function enviarDatos(nom,mail,tel,foto){
 	$.ajax({
 		type: "POST",
-		url: "http://10.175.11.51/pgtest.php",
+		url: "http://10.175.11.74/pgtest.php",
 		data: "nom="+nom+"&mai="+mail+"&tel="+tel
 	}).done(function(msg){
 		if(msg==1){
@@ -18,7 +18,7 @@ function enviarReservas(th,pr,ha,di){
 	alert(0);
 	$.ajax({
 		type: "POST",
-		url: "http://10.175.11.51/pgtest.php",
+		url: "http://10.175.11.74/pgtest.php",
 		data: "t="+th+"&p="+pr+"&h="+ha+"&d="+di
 	}).done(function(msg) {
 		if(msg==1){

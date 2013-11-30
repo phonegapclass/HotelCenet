@@ -47,6 +47,7 @@ function leerReservas(){
 				var pr = res.rows.item(i).pr;
 				var ha = res.rows.item(i).ha;
 				var di = res.rows.item(i).di;
+				alert(th+'\n'+pr+'\n'+ha+'\n'+di);
 				enviarReservas(th,pr,ha,di);
 				//tx2.executeSql('DELETE FROM reservas WHERE id='+res.rows.item(i).id);
 			}
