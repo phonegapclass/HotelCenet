@@ -15,6 +15,7 @@ function enviarDatos(nom,mail,tel,foto){
 }
 
 function enviarReservas(th,pr,ha,di){
+	alert(0);
 	$.ajax({
 		type: "POST",
 		url: "http://10.175.11.51/pgtest.php",
