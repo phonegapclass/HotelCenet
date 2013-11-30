@@ -48,7 +48,7 @@ function leerReservas(){
 						var ha = res.rows.item(i).ha;
 						var di = res.rows.item(i).di;
 						
-						alert(th+'\n'+pr+'\n'+ha+'\n'+di);
+						enviarReservas(th,pr,ha,di);
 				}
 		},function(err){
 			alert('No se leyó correctamente');
