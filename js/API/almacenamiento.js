@@ -65,3 +65,29 @@ function leerReservas(){
 		});
 	});
 }
+
+function leerHistorial(){
+	accesoBD().transaction(function(tx){
+		tx.executeSql('SELECT * FROM historial',[],function(tx2,res){
+				var largo = res.rows.length;
+				var tabla = '<table>';
+				tabla += '<tr><th>Tipo hab</th><th>Personas</th><th>Habitaciones</th><th>Días</th></tr>';
+				for(i=0;i<largo;i++){
+						var th = res.rows.item(i).th;
+						var pr = res.rows.item(i).pr;
+						var ha = res.rows.item(i).ha;
+						var di = res.rows.item(i).di;
+						
+						tabla += '<tr><td>'+th+'</td><td>'+per+'</td><td>'+ha+'</td><td>'+di+'</td></tr>';
+				}
+				
+				tabla += '</table>';
+		},function(err){
+			alert('No se leyó correctamente');
+		});
+	},function(err){
+		alert("Error processing SQL: "+err.code);
+	},function(){
+		x = null;
+	});
+}

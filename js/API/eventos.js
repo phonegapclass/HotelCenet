@@ -49,6 +49,9 @@ $(function(){
 				crearReservas(th,pr,ha,di);//Guardamos datos localmente
 		});
 		document.addEventListener("online",leerReservas,false);
+		$('#page ul[data-role=listview] li:eq(1)').tap(function(){
+			//leerHistorial();
+		});
 	}, false);
 });
 
