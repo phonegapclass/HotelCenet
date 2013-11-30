@@ -17,14 +17,51 @@ function accesoBD(){
 }
 
 function crearReservas(th,pr,ha,di){
-	alert(0);
 	accesoBD().transaction(function(tx){
-		alert(1);
     	tx.executeSql('CREATE TABLE IF NOT EXISTS reservas (id unique,th,pr,ha,di)');
         tx.executeSql('INSERT INTO reservas (th,pr,ha,di) VALUES ("'+th+'","'+pr+'","'+ha+'","'+di+'")');
 	},function(err){
     	alert("Error processing SQL: "+err.code);
 	},function(){
     	navigator.notification.alert("Esperando a conexión para sincronizar",null,"Reserva Guardada","De acuerdo");
+	});
+}
+
+function crearHistorial(th,pr,ha,di){
+	accesoBD().transaction(function(tx){
+		tx.executeSql('CREATE TABLE IF NOT EXISTS historial (id unique,th,pr,ha,di)');
+        tx.executeSql('INSERT INTO historial (th,pr,ha,di) VALUES ("'+th+'","'+pr+'","'+ha+'","'+di+'")');
+	},function(err){
+		alert("Error processing SQL: "+err.code);
+	},function(){
+		navigator.notification.alert("Reserva Realizada y guardada en historial",null,"Reserva Creada","De acuerdo");
+	});
+}
+
+function leerReservas(){
+	accesoBD().transaction(function(tx){
+		tx.executeSql('SELECT * FROM resarvas',[],function(tx2,res){
+			var largo = res.rows.length;
+			for(i=0;i<largo;i++){
+				var th = res.rows.item(i).th;
+				var pr = res.rows.item(i).pr;
+				var ha = res.rows.item(i).ha;
+				var di = res.rows.item(i).di;
+				enviarReservas(th,pr,ha,di);
+				//tx2.executeSql('DELETE FROM reservas WHERE id='+res.rows.item(i).id);
+			}
+		},function(err){
+			alert('No se leyó correctamente');
+		});
+	},function(err){
+		alert("Error processing SQL: "+err.code);
+	},function(){
+		accesoBD().transaction(function(tx){
+			tx.executeSql('DELETE FROM reservas');
+		},function(err){
+			alert('No se eliminaron los registros');
+		},function(){
+			x = null;
+		});
 	});
 }
